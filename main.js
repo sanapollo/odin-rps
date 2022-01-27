@@ -28,7 +28,12 @@ demo = () => {
 }
 
 
-playGame = (user=demo()) => {
+playGame = (user) => {
+    if (user) {
+
+    } else {
+        user = demo();
+    }
     let computer = computerPlay();
     let winner;
 
@@ -58,7 +63,7 @@ playGame = (user=demo()) => {
             winner = true;
         }
     }
-    console.log(winner);
+    console.log(`You entered ${user}. If you didn't enter anything this was generated for you. Computer said ${computer}`);
     //Winner Message
     if (winner == "tie") {
         winner = "You Tied! Try again";
@@ -71,7 +76,7 @@ playGame = (user=demo()) => {
     return winner;
 }
 
-fewGames = (choice = demo()) => {
+fewGames = (choice) => {
     let max = 5;
     let pcounter = 0, ccounter = 0;
 
@@ -93,4 +98,4 @@ fewGames = (choice = demo()) => {
 
 }
 
-console.log(fewGames("rock"));
+console.log(fewGames());
