@@ -3,14 +3,18 @@ html {
     color: white;
 }
 
-.container {
+.top, .mid {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 5em;
     gap: 1em;
 }
-.container div {
+.top div, .mid{
     padding: 3em;
     border: 2px solid black;
+}
+
+.mid {
+   margin-top: 2em; 
 }

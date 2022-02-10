@@ -35,11 +35,11 @@ playGame = (user) => {
     }
     let computer = computerPlay();
     let winner;
-    const output = document.getElementById('output');
     const computerout = document.getElementById('computer');
-    
-    
+    const userout = document.getElementById('user');
+
     computerout.textContent = computer;
+    userout.textContent = user;
 
 
     //Game Logic
@@ -68,62 +68,56 @@ playGame = (user) => {
             winner = true;
         }
     }
-    console.log(`You entered ${user}. If you didn't enter anything this was generated for you. Computer said ${computer}`);
+    return winner;
+}
+buttonAttach = () => {
+    const clear = document.getElementById("clear");
+    const scissors = document.getElementById("scissors");
+    const rock = document.getElementById("rock");
+    const paper = document.getElementById("paper");
+
+    scissors.addEventListener('click', () => {
+        playGameScores("scissors");
+    });
+    rock.addEventListener('click', () => {
+        playGameScores("rock");
+    });
+    paper.addEventListener('click', () => {
+        playGameScores("paper");
+    });
+    clear.addEventListener('click', () => {
+        cscore = 0;
+        uscore = 0;
+    });
+}
+
+playGameScores = (user) => {
+    const outcscore = document.getElementById("computerscore");
+    const outuscore = document.getElementById("userscore");
+    const output = document.getElementById('output');
+    
+    // Clear Button
+    
+
+    //Launch Game
+    let winner = playGame(user);
+
     //Winner Message
     if (winner == "tie") {
         winner = "You tied! Try again";
     } else if (winner) {
         winner = "You won! Well done!";
+        uscore += 1;
     } else {
         winner = "You lost! Computer won.";
+        cscore += 1;
     }
     output.textContent = winner;
-    //return winner;
-}
-
-fewGames = (choice) => {
-    let max = 5;
-    let pcounter = 0, ccounter = 0;
-
-    for (let i = 0; i < max; i++) {
-        let game = playGame(choice);
-        
-        //Counting
-        
-        if (game == "You won! Well done!") {
-            pcounter +=1;
-        } else if (game == "You lost! Computer won."){
-            ccounter +=1;
-        }
-        console.log(game);
-        console.log(`Game no: ${i}. Wins: P ${pcounter}, C ${ccounter}`);
-    }
-
-
+    outcscore.textContent = cscore;
+    outuscore.textContent = uscore;
 
 }
 
-//console.log(fewGames());
-startGame = () => {
-    const scissors = document.getElementById("scissors");
-    const rock = document.getElementById("rock");
-    const paper = document.getElementById("paper");
-    
-
-
-    scissors.addEventListener('click', () => {
-        console.log("pressed");
-        playGame("scissors");
-        
-    });
-    rock.addEventListener('click', () => {
-        playGame("rock");
-    });
-    paper.addEventListener('click', () => {
-        playGame("paper");
-    });
-
-
-}
-
-startGame();
+let cscore = 0;
+let uscore = 0;
+buttonAttach();

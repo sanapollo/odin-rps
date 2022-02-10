@@ -12,25 +12,32 @@
 
 <body>
     <h1>Rock Paper Scissors</h1>
-    <div class="container">
+    <div class="top">
 
         <div class="options">
             <h3>Choose your move:</h3>
             <button id="rock">Rock</button>
             <button id="paper">Paper</button>
             <button id="scissors">Scissors</button>
+            <button id="clear">Clear</button>
         </div>
-        <div class="computer">
+        <div class="choices">
+            <h3>Your Choice</h3>
+            <p id="user"></p>
             <h3>Computer's Choice</h3>
             <p id="computer"></p>
         </div>
-
-
         <div class="answer">
             <h3>Results</h3>
             <p id="output"></p>
         </div>
-
+    </div>
+    <div class="mid">
+        <h3>Scores:</h3>
+        <div class="score">
+            <h5>Computer: <span id="computerscore">0</span></h5>
+            <h5>You: <span id="userscore">0</span></h5>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
