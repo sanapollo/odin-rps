@@ -16,7 +16,6 @@ computerPlay = () => {
 }
 
 userPlay = () => {
-    //Definitely want this to take an input
     let answer = prompt("Rock Paper Or Scissors?");
     answer = answer.toLowerCase();
     return answer;
@@ -36,6 +35,12 @@ playGame = (user) => {
     }
     let computer = computerPlay();
     let winner;
+    const output = document.getElementById('output');
+    const computerout = document.getElementById('computer');
+    
+    
+    computerout.textContent = computer;
+
 
     //Game Logic
     if (user == "rock") {
@@ -66,14 +71,14 @@ playGame = (user) => {
     console.log(`You entered ${user}. If you didn't enter anything this was generated for you. Computer said ${computer}`);
     //Winner Message
     if (winner == "tie") {
-        winner = "You Tied! Try again";
+        winner = "You tied! Try again";
     } else if (winner) {
-        winner = "You Won! Well done!";
+        winner = "You won! Well done!";
     } else {
-        winner = "You Lost! Computer Won.";
+        winner = "You lost! Computer won.";
     }
-
-    return winner;
+    output.textContent = winner;
+    //return winner;
 }
 
 fewGames = (choice) => {
@@ -85,9 +90,9 @@ fewGames = (choice) => {
         
         //Counting
         
-        if (game == "You Won! Well done!") {
+        if (game == "You won! Well done!") {
             pcounter +=1;
-        } else if (game == "You Lost! Computer Won."){
+        } else if (game == "You lost! Computer won."){
             ccounter +=1;
         }
         console.log(game);
@@ -98,4 +103,27 @@ fewGames = (choice) => {
 
 }
 
-console.log(fewGames());
+//console.log(fewGames());
+startGame = () => {
+    const scissors = document.getElementById("scissors");
+    const rock = document.getElementById("rock");
+    const paper = document.getElementById("paper");
+    
+
+
+    scissors.addEventListener('click', () => {
+        console.log("pressed");
+        playGame("scissors");
+        
+    });
+    rock.addEventListener('click', () => {
+        playGame("rock");
+    });
+    paper.addEventListener('click', () => {
+        playGame("paper");
+    });
+
+
+}
+
+startGame();

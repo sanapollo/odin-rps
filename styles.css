@@ -1,0 +1,16 @@
+html {
+    background-color: darkslategray;
+    color: white;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5em;
+    gap: 1em;
+}
+.container div {
+    padding: 3em;
+    border: 2px solid black;
+}
